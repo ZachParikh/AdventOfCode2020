@@ -7,13 +7,7 @@ fs.readFile("inputs/input4.txt", "utf8", (err, data) => {
           passport.split(/[\n ]/).map(field => field.split(":")))
         .map(passport => Object.fromEntries(passport));
 
-  const numValid = passports.reduce((acc, passport) => {
-    if (validPassport(passport)) {
-      return acc + 1;
-    } else {
-      return acc;
-    }
-  }, 0);
+  const numValid = passports.filter(passport => validPassport(passport)).length;
     
   console.log(numValid);
 });
